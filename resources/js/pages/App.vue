@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from '../components/navbar/Navbar.vue'
+import Navbar from '../components/nav/Navbar.vue'
 import Kanban from '../components/tasks/Kanban.vue'
 import TasksList from '../components/tasks/TasksList.vue'
 </script>
