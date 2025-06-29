@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTaskRequest;
 use App\Models\Task;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
 
-    public function index()
-    {
-     return Task::orderBy('created_at', 'desc')->get();
+    public function index(Request $request)
+    {   
+        // Obtener parámetros de paginación desde el frontend
+        $perPage = $request->get('perPage', 10); // Por defecto 10 items por página
+        $page = $request->get('page', 1); // Por defecto página 1
+        
+        return Task::orderBy("created_at", "desc")->paginate($perPage, ['*'], 'page', $page);
     }
     public function store(CreateTaskRequest $request)
     {

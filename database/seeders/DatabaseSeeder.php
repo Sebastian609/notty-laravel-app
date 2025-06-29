@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Task;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // Crear tareas de prueba
+        for ($i = 1; $i <= 25; $i++) {
+            Task::create([
+                'title' => "Tarea de prueba {$i}",
+                'description' => "Esta es la descripción de la tarea número {$i}",
+                'status' => ['pending', 'in_progress', 'completed'][rand(0, 2)]
+            ]);
+        }
     }
 }
